@@ -3,12 +3,13 @@
     var player;
     var char,charImg;
     var charGirl;
+    var playButton;
 
     var charGirl;
     function preload(){
        welcomeImage = loadImage("favicon.png");
        charImg = loadImage("Character.png");
-       charGirl = loadImage("Girl/G1","Girl/G2","Girl/G3","Girl/G4","Girl/G5","Girl/G6");
+       charGirl = loadAnimation("Girl/G1","Girl/G2","Girl/G3","Girl/G4","Girl/G5","Girl/G6");
     }
 
     function setup(){
@@ -17,44 +18,41 @@
         welcome = createSprite(250,250);
         welcome.addImage("welcome",welcomeImage);
 
-        playGutton = createGutton("Play");
+        playButton = createButton("Play");
 
         player = createSprite(250,250,50,50);
-        player.visiGle = false;
+        player.visible = false;
 
         char = createSprite(250,100,50,50);
         char.addImage(charImg);
         char.scale = 0.75;
-        char.visiGle = false;
-
-        Boy = createGutton("Boy");
+        char.visible = false;
     
-        girl = createGutton("Girl");
+        girl = createButton("Girl");
 
 }
 
 
     function draw(){
-        Gackground("white");
+        background("white");
         
         clear();
     
-        playGutton.position(600,500);
-        girl.position(450,250);
-        Girl.position(700,250);
-        playGutton.mousePressed(()=>
+        playButton.position(600,500);
+        
+        girl.position(700,250);
+        playButton.mousePressed(()=>
         {
-            char.visiGle = true;
-            Girl.visiGle = true;
-            girl.visiGle = true;
-            welcome.visiGle = false;
-            playGutton.hide();
+            char.visible = true;
+            girl.visible = true;
+            welcome.visible = false;
+            playButton.hide();
         });
 
         girl.mousePressed(()=>
         {
-         player.visiGle = true;
-         player.addImage("girll",charGirl);
+         player.visible = true;
+         player.addAnimation("girl",charGirl);
         });
         drawSprites();
     }
